@@ -1,0 +1,113 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trello</title>
+    <!-- Подключаем стили для всего приложения -->
+    <link rel="stylesheet" href="{% static 'css/trello.css' %}">
+    <link rel="stylesheet" href="{% static 'css/trelloMainPage.css' %}">
+    {% block extrahead %}{% endblock %}
+</head>
+
+<body>
+    <!-- NAVBAR: верхняя панель навигации -->
+    <nav class="navbar">
+        <div class="nav-left">
+            <div class="logo">
+                <!-- Логотип, клик по нему ведёт на главную страницу -->
+                <span class="logo-text" onclick="window.location.href='/'">Trello</span>
+            </div>
+        </div>
+        <div class="nav-right">
+            <div class="user-dropdown">
+                <!-- Кнопка пользователя (гость/имя) -->
+                <button id="user-btn" class="nav-btn">Гость</button>
+                <!-- Выпадающее меню пользователя -->
+                <div id="user-menu" class="dropdown-menu" style="display: none;">
+                    <button onclick="openAuthModal('login')" class="dropdown-item">Войти</button>
+                    <button onclick="openAuthModal('register')" class="dropdown-item">Зарегистрироваться</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    {% block navdropdowns %}{% endblock %}
+
+    <!-- Основная часть страницы -->
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Подключение основных JS-скриптов -->
+    <script src="{% static 'js/trelloMainPage.js' %}"></script>
+    <script src="{% static 'js/trello.js' %}"></script>
+    <script src="{% static 'js/auth.js' %}"></script>
+    {% block extrascripts %}{% endblock %}
+
+    <!-- Модальное окно для формы входа/регистрации -->
+    <div class="auth-modal" id="authModal" style="display:none;">
+        <div class="auth-modal-content">
+            <button class="auth-close" onclick="closeAuthModal()">×</button>
+            <div class="auth-tabs">
+                <button class="auth-tab active" onclick="switchAuthTab('login')">Вход</button>
+                <button class="auth-tab" onclick="switchAuthTab('register')">Регистрация</button>
+            </div>
+
+            <!-- Форма Входа -->
+            <div class="auth-form" id="loginForm">
+                <h2>Войти в аккаунт</h2>
+                <form onsubmit="handleLogin(event)">
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" id="login-email" placeholder="example@mail.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Пароль</label>
+                        <input type="password" id="login-password" placeholder="••••••••" required>
+                    </div>
+                    <div id="login-error" class="auth-error" style="display:none;"></div>
+                    <button type="submit" class="auth-btn" id="login-submit-btn">
+                        <span>Войти</span>
+                        <span class="spinner" id="login-spinner" style="display:none;"></span>
+                    </button>
+                </form>
+            </div>
+
+            <!-- Форма Регистрации -->
+            <div class="auth-form hidden" id="registerForm">
+                <h2>Создать аккаунт</h2>
+                <form onsubmit="handleRegister(event)">
+                    <div class="form-group">
+                        <label>Имя</label>
+                        <input type="text" id="register-name" placeholder="Ваше имя" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" id="register-email" placeholder="example@mail.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Пароль</label>
+                        <input type="password" id="register-password" placeholder="••••••••" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Подтвердите пароль</label>
+                        <input type="password" id="register-password2" placeholder="••••••••" required>
+                    </div>
+                    <div id="register-error" class="auth-error" style="display:none;"></div>
+                    <button type="submit" class="auth-btn" id="register-submit-btn">
+                        <span>Зарегистрироваться</span>
+                        <span class="spinner" id="register-spinner" style="display:none;"></span>
+                    </button>
+                    <div class="auth-footer">
+                        <span class="auth-text">Есть аккаунт? <a href="#" onclick="switchAuthTab('login')"
+                                class="auth-link">Войти</a></span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

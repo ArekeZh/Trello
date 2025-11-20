@@ -1,0 +1,50 @@
+# Базовые Python файлы
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Виртуальное окружение
+venv/
+env/
+.venv/
+.env/
+
+# Конфиги IDE
+.vscode/
+.idea/
+*.swp
+
+# Логи
+*.log
+
+# Базы данных
+*.sqlite3
+
+# Миграции, если не нужны в Git (опционально)
+# */migrations/
+
+# Файлы среды (секреты)
+.env
+.env.*
+
+# Статики и медиа
+/staticfiles/
+/media/
+/static/
+node_modules/
+
+# Кэш
+*.cache
+*.egg
+*.egg-info
+dist/
+build/
+
+# Mac, Linux, Windows служебные
+.DS_Store
+Thumbs.db
+
+# Тестовые покрытия
+htmlcov/
+.coverage
+.tox/
