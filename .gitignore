@@ -30,7 +30,6 @@ env/
 # Статики и медиа
 /staticfiles/
 /media/
-/static/
 node_modules/
 
 # Кэш
