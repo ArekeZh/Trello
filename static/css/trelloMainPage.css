@@ -1,0 +1,674 @@
+/* static/css/trelloMainPage.css */
+/* Темы, dropdown-меню, крупная сетка, кнопки главной страницы */
+
+.main-page {
+  margin: 2em auto;
+  max-width: 1200px;
+}
+
+.boards-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2.3em;
+  margin-left: 2em;
+}
+
+.boards-header h2 {
+  font-size: 1.35em;
+  font-weight: 700;
+  margin: 0;
+}
+
+.boards-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 28px;
+  margin-top: 1em;
+}
+
+.create-board-btn {
+  background: #3498db;
+  color: #fff;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  padding: 7px 26px;
+  font-size: 1em;
+  box-shadow: 0 2px 9px rgba(40, 40, 70, 0.05);
+  cursor: pointer;
+  transition: background 0.19s;
+}
+
+.create-board-btn:hover {
+  background: #1480cb;
+}
+
+.no-boards-message {
+  font-size: 1.15em;
+  font-weight: 500;
+  text-align: center;
+  margin-top: 5em;
+  color: #7b7d82;
+}
+
+
+.board-card {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(44, 55, 71, 0.13);
+  min-width: 250px;
+  min-height: 90px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 1.2em;
+  font-size: 1.15em;
+  color: #222e3c;
+  transition: box-shadow 0.2s;
+  cursor: pointer;
+  margin-bottom: 2em;
+}
+
+.board-card:hover {
+  box-shadow: 0 4px 18px rgba(30, 45, 65, .16);
+}
+
+.board-card-header {
+  font-size: 1.19em;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.board-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  width: 100%;
+}
+
+.board-date {
+  font-size: 0.55em;
+  color: #b4b8c2;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+.board-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  background: none;
+  box-shadow: none;
+  padding: 0;
+}
+
+.board-action-btn {
+  background: rgba(44, 55, 71, 0.11);
+  border: none;
+  padding: 6px 12px;
+  border-radius: 7px;
+  color: #41506b;
+  font-size: 1.11em;
+  cursor: pointer;
+  transition: background 0.18s, color 0.18s, box-shadow 0.17s;
+  outline: none;
+}
+
+.board-action-btn:hover {
+  background: rgba(67, 98, 158, 0.19);
+  color: #1560bf;
+  box-shadow: 0 2px 8px rgba(44, 55, 90, 0.11);
+}
+
+.board-action-btn.delete:hover {
+  background: rgba(255, 107, 107, 0.18);
+  color: #d14242;
+}
+
+.board-card-description {
+  font-size: 0.78em;
+  color: #b4b8c2;
+  font-weight: 400;
+  margin: 6px 0 2px 0;
+  min-height: 24px;
+  /* для выравнивания по высоте, если описания нет */
+  max-height: 42px;
+  /* ограничение на высоту (2 строки) */
+  overflow: hidden;
+  /* скрывает лишнее, если длинно */
+  text-overflow: ellipsis;
+  /* троеточие при переполнении */
+  line-height: 1.32;
+  word-break: break-word;
+}
+
+.mini-divider {
+  margin: 7px 0 6px 0;
+  width: 100%;
+  /* 30–60px по вкусу */
+  border-top: 2px solid #e1e6ee;
+  /* или rgba(0,0,0,0.10) для темной темы */
+  border-radius: 2px;
+  align-self: center
+    /* не растягивается на всю ширину */
+}
+
+/* Theme menu, dropdown and avatar (если реализуешь) */
+.theme-dropdown,
+.avatar-dropdown {
+  position: absolute;
+  top: 48px;
+  right: 22px;
+  width: 230px;
+  background: #fff;
+  border-radius: 7px;
+  box-shadow: 0 4px 24px rgba(20, 30, 55, 0.06);
+  z-index: 100;
+  padding: 18px;
+  display: none;
+}
+
+.theme-dropdown.active,
+.avatar-dropdown.active {
+  display: block;
+}
+
+.theme-option {
+  background: #f3f5fa;
+  border-radius: 5px;
+  border: none;
+  padding: 11px;
+  cursor: pointer;
+  margin-bottom: 7px;
+  display: flex;
+  align-items: center;
+  font-size: 1em;
+  transition: background 0.18s;
+}
+
+.theme-option.active {
+  background: #dde5fd;
+}
+
+/* Avatar styles */
+.avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #4185e7;
+  color: #fff;
+  font-size: 1.2em;
+  text-align: center;
+  line-height: 34px;
+  margin-left: 18px;
+  display: inline-block;
+  font-weight: 1500;
+}
+
+/* Other adaptations, responsive tuning as needed */
+@media (max-width: 650px) {
+  .boards-grid {
+    gap: 12px;
+  }
+
+  .main-page {
+    padding: 0 0.7em;
+  }
+}
+
+/* Dropdown user-menu styles для навбара */
+.user-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+#user-btn.nav-btn {
+  background: #4185e7;
+  color: #fff;
+  border: none;
+  margin-left: 8px;
+  padding: 6px 16px;
+  border-radius: 4px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background 0.18s;
+  min-width: 96px;
+  font-weight: 600;
+}
+
+#user-btn.nav-btn:hover {
+  background: #315fbe;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 38px;
+  right: -2px;
+  min-width: 170px;
+  background: #fff;
+  border-radius: 7px;
+  box-shadow: 0 4px 20px rgba(32, 42, 60, 0.18);
+  z-index: 101;
+  padding: 10px 0;
+  display: none;
+}
+
+.dropdown-menu .dropdown-item {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 8px 20px;
+  font-size: 1em;
+  color: #414d68;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.16s;
+}
+
+.dropdown-menu .dropdown-item:hover {
+  background: #e5ecfa;
+  color: #2c53a7;
+}
+
+@media (max-width: 650px) {
+  #user-btn.nav-btn {
+    min-width: 80px;
+    font-size: 0.97em;
+    padding: 6px 10px;
+  }
+
+  .dropdown-menu {
+    min-width: 140px;
+    top: 34px;
+    right: -1px;
+  }
+}
+
+/* Окошко удаления доски */
+.modal {
+  position: fixed;
+  z-index: 2001;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(40, 48, 70, 0.24);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 40px rgba(40, 48, 80, 0.13);
+  padding: 30px 28px 20px 28px;
+  min-width: 320px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* <-- Главная строчка для центрирования ВСЕГО! */
+}
+
+.modal-title {
+  margin-bottom: 17px;
+  font-size: 1.09em;
+  font-weight: 600;
+  color: #374063;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  margin-top: 6px;
+}
+
+.modal-btn {
+  padding: 7px 32px;
+  border-radius: 7px;
+  border: none;
+  font-size: 1em;
+  background: #ecf0fa;
+  color: #213154;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.16s, color 0.15s;
+}
+
+.modal-btn.delete {
+  background: #ffd6d6;
+  color: #bb2424;
+}
+
+.modal-btn.delete:hover {
+  background: #ffebeb;
+  color: #951919;
+}
+
+.modal-btn:hover {
+  background: #e2eafe;
+  color: #2761ca;
+}
+
+/* Окошко создания доски */
+.modal-label {
+  margin: 10px 0 4px 3px;
+  font-size: 0.99em;
+  display: block;
+  color: #495073;
+  font-weight: 500;
+}
+
+.modal-input {
+  width: 260px;
+  /* или 240/280, подбирай визуально под размер модалки */
+  min-width: 100px;
+  max-width: 100%;
+  padding: 7px 12px;
+  margin-bottom: 13px;
+  border: 1.2px solid #dde0e7;
+  border-radius: 6px;
+  font-size: 1em;
+  background: #f7faff;
+  transition: border .15s;
+  resize: none;
+  display: block;
+}
+
+.modal-input:focus {
+  border: 1.2px solid #66a0ec;
+  outline: none;
+}
+
+.modal-actions-bottom {
+  display: flex;
+  justify-content: center;
+  /* flex-end если справа, center если по центру */
+  gap: 12px;
+  margin-top: 10px;
+  margin-bottom: -10px;
+  padding-right: 2px;
+}
+
+.modal-btn.create {
+  background: #d3ebff;
+  color: #23467c;
+}
+
+.modal-btn.create:hover {
+  background: #b8e0ff;
+  color: #1856bb;
+}
+
+.modal-close-btn {
+  background: none;
+  border: none;
+  font-size: 1.73em;
+  color: #B4B8C2;
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  cursor: pointer;
+  font-weight: 600;
+  padding: 0 6px;
+  line-height: 1;
+  transition: color .16s;
+}
+
+.modal-close-btn:hover {
+  color: #ff7676;
+}
+
+/* MODAL AUTH OVERLAY */
+.auth-modal {
+  position: fixed;
+  z-index: 3000;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(36, 48, 80, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.22s;
+}
+
+/* Модальное окно авторизации */
+.auth-modal-content {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 6px 32px rgba(42, 58, 112, 0.14);
+  padding: 36px 44px 26px 44px;
+  min-width: 330px;
+  min-height: 370px;
+  position: relative;
+}
+
+.auth-close {
+  position: absolute;
+  top: 14px;
+  right: 22px;
+  background: none;
+  border: none;
+  font-size: 2em;
+  color: #b4bcc9;
+  cursor: pointer;
+  line-height: 1;
+  transition: color .14s;
+}
+
+.auth-close:hover {
+  color: #ff6565;
+}
+
+/* TABS */
+.auth-tabs {
+  display: flex;
+  gap: 4px;
+  justify-content: center;
+  margin-bottom: 24px;
+  margin-top: 3px;
+}
+
+.auth-tab {
+  flex: 1;
+  background: #eef6ff;
+  border: none;
+  padding: 10px 0 12px 0;
+  font-size: 1.14em;
+  font-weight: 600;
+  color: #3884e2;
+  cursor: pointer;
+  border-radius: 6px 6px 0 0;
+  transition: background 0.13s;
+  outline: none;
+}
+
+.auth-tab.active {
+  background: #fff;
+  color: #29397A;
+  border-bottom: 2px solid #3079c8;
+}
+
+/* FORMS */
+.auth-form {
+  display: none;
+}
+
+.auth-form:not(.hidden) {
+  display: block;
+}
+
+.auth-form h2 {
+  margin-bottom: 19px;
+  font-size: 1.28em;
+  color: #23365D;
+  text-align: center;
+  letter-spacing: 0.01em;
+}
+
+/* INPUTS & BUTTONS */
+.form-group {
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-size: 1em;
+  color: #415076;
+  margin-bottom: 4px;
+  font-weight: 500;
+}
+
+.form-group input[type="email"],
+.form-group input[type="text"],
+.form-group input[type="password"] {
+  border: 1.5px solid #e6ecf6;
+  border-radius: 5px;
+  padding: 8px 12px;
+  font-size: 1em;
+  font-family: inherit;
+  transition: border-color .18s;
+  outline: none;
+  color: #32395A;
+  background: #fcfdff;
+}
+
+.form-group input[type="email"]:focus,
+.form-group input[type="text"]:focus,
+.form-group input[type="password"]:focus {
+  border-color: #46a0f5;
+  background: #f0f7ff;
+}
+
+.auth-btn {
+  width: 100%;
+  background: #4290ff;
+  color: #fff;
+  padding: 10px 0 11px 0;
+  border: none;
+  border-radius: 5px;
+  font-weight: 700;
+  font-size: 1.08em;
+  cursor: pointer;
+  margin-top: 9px;
+  box-shadow: 0 2px 7px rgba(76, 153, 255, .05);
+  transition: background 0.14s;
+}
+
+.auth-btn:hover {
+  background: #2762d9;
+}
+
+.auth-footer {
+  margin-top: 16px;
+  text-align: center;
+  color: #627199;
+  font-size: 1em;
+}
+
+.auth-link {
+  color: #2678f2;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.auth-link:hover {
+  color: #3451c6;
+  text-decoration: underline;
+}
+
+.auth-text {
+  color: #526079;
+}
+
+.hidden {
+  display: none;
+}
+
+/* NAVBAR DROPDOWN */
+.user-dropdown {
+  position: relative;
+}
+
+#user-menu.dropdown-menu {
+  position: absolute;
+  right: 0;
+  top: 33px;
+  background: #fff;
+  border-radius: 6px;
+  box-shadow: 0 2px 11px rgba(20, 30, 60, 0.09);
+  min-width: 165px;
+  display: none;
+  z-index: 1100;
+  padding: 7px 0;
+  border: 1px solid #e8eef4;
+}
+
+.dropdown-item {
+  background: none;
+  border: none;
+  padding: 11px 22px 11px 21px;
+  display: block;
+  width: 100%;
+  text-align: left;
+  color: #35405c;
+  font-size: 1.01em;
+  cursor: pointer;
+  transition: background .12s, color .11s;
+}
+
+.dropdown-item:hover {
+  background: #f4faff;
+  color: #1a51aa;
+}
+
+.auth-error {
+  color: #e9493b;
+  background: #fff1f0;
+  border: 1px solid #eca4a0;
+  border-radius: 6px;
+  margin-bottom: 12px;
+  padding: 8px 12px;
+  font-size: 1em;
+  text-align: center;
+  font-weight: 500;
+  display: none;
+}
+
+.spinner {
+  display: inline-block;
+  width: 19px;
+  height: 19px;
+  vertical-align: middle;
+  border: 2px solid #b5d0fe;
+  border-top: 2px solid #337cff;
+  border-radius: 50%;
+  animation: spin 0.85s linear infinite;
+  margin-left: 9px;
+}
+
+.auth-btn-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
