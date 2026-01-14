@@ -158,7 +158,7 @@
 1. **Клонируйте репозиторий**
    ```bash
    git clone https://github.com/ArekeZh/Trello.git
-   cd trello
+   cd Trello
    ```
 
 2. **Создайте виртуальное окружение**
